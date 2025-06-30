@@ -102,6 +102,14 @@ public class EliminarPaciente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public JButton getBotonEliminar() {
+        return botonEliminar;
+    }
+    
+    public String getDniIngresado() {
+        return textFieldDNI.getText().trim();
+    }
+    
     private void textFieldDNIMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textFieldDNIMouseClicked
         // TODO add your handling code here:
         textFieldDNI.setText("");
@@ -124,7 +132,6 @@ public class EliminarPaciente extends javax.swing.JFrame {
         if (ventana != null) {
             ventana.dispose();
         }
-        JOptionPane.showMessageDialog(null, "Operación exitosa! ");
     }//GEN-LAST:event_botonEliminarActionPerformed
 
     /**

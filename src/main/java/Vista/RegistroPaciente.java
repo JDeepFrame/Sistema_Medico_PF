@@ -22,6 +22,7 @@ public class RegistroPaciente extends javax.swing.JFrame {
         this.setSize(675, 220); //Ajusta tamaño
         this.setLocationRelativeTo(null); //Centra en pantalla
         
+        
         // Renderer para deshabilitar visualmente el primer ítem
         comboBoxEsp.setRenderer(new DefaultListCellRenderer() {
         @Override
@@ -220,6 +221,37 @@ public class RegistroPaciente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //Getters para acceder desde el controlador
+    public String getDniIngresado() {
+        return textFieldDNI.getText();
+    }
+    
+    public String getNombreIngresado() {
+        return textFieldNombre.getText();
+    }
+    
+    public String getApellidoIngresado() {
+        return textFieldApellido.getText();
+    }
+    
+    public String getEspecialidadIngresada() {
+        return comboBoxEsp.getSelectedItem().toString();
+    }
+    
+    public String getTieneSIS() {
+        if (rbSi.isSelected()) {
+            return "Si";
+        } else if (rbNo.isSelected()) {
+                    return "No";
+                } else {
+                    return ""; // O puedes lanzar una excepción
+                        }
+    }
+    
+    public JButton getBotonAgregar() {
+        return botonAgregar; //Devuelve un Jbutton(botonAgregar).
+    }
+    
     private void textFieldNombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textFieldNombreMouseClicked
         // TODO add your handling code here:
         textFieldNombre.setText("");

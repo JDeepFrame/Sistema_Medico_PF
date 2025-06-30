@@ -43,3 +43,6 @@ out/
 .project
 .classpath
 .settings/
+
+##Ignorar archivo /data/pacientes.txt
+/data/pacientes.txt

@@ -3,20 +3,21 @@ package Modelo;
  *
  * @author J. Vidaurre Al.
  */
+
+//Molde para crear personas
 public abstract class Persona {
     
     protected String nombre;
-    protected String apellidos;
+    protected String apellido;
     protected String dni;
 
     protected Persona() {
     }
 
-    protected Persona(String nombre, String apellidos, String dni) {
+    protected Persona(String nombre, String apellido, String dni) {
         this.nombre = nombre;
-        this.apellidos = apellidos;
+        this.apellido = apellido;
         this.dni = dni;
     }
     
-    protected abstract <T> void nostrarDatos();    
 }

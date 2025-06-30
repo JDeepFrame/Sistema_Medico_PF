@@ -1,11 +1,13 @@
 package Vista;
 
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author J. Vidaurre Al.
  */
+
 public class VentanaPrincipal extends javax.swing.JFrame {
     
     /**
@@ -112,6 +114,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public JButton getBotonAgregar() {
+        return botonAgregar;
+    }
+    
+    public JButton getBotonEliminar() {
+        return botonEliminar;
+    }
+    
+    public JButton getBotonMostrar() {
+        return botonMostrar;
+    }
+    
     private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
         // TODO add your handling code here:
         System.exit(0);
@@ -120,17 +134,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void botonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarActionPerformed
         // TODO add your handling code here:
         //Creamos una instancia de la clase "RegistroNuevoPaciente"
-        RegistroPaciente nuevoPaciente = new RegistroPaciente();
+        //RegistroPaciente registro = new RegistroPaciente();
         //Configuramos el frame para que se muestre
-        nuevoPaciente.setVisible(true);
+        //registro.setVisible(true);
     }//GEN-LAST:event_botonAgregarActionPerformed
 
     private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
         // TODO add your handling code here:
         //Creamos una instancia de la clase "EliminarPaciente"
-        EliminarPaciente eliminarPaciente = new EliminarPaciente();
+        //EliminarPaciente eliminarPaciente = new EliminarPaciente();
         //Configuramos el frame para que se muestre
-        eliminarPaciente.setVisible(true);
+        //eliminarPaciente.setVisible(true);
     }//GEN-LAST:event_botonEliminarActionPerformed
 
     private void botonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEditarActionPerformed
@@ -143,7 +157,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void botonMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMostrarActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "Disponible próximamente!! ");
+        //JOptionPane.showMessageDialog(null, "Disponible próximamente!! ");
     }//GEN-LAST:event_botonMostrarActionPerformed
 
     private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
