@@ -1,8 +1,10 @@
 package Vista;
+
 /**
  *
  * @author J. Vidaurre Al.
  */
+
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
@@ -12,16 +14,18 @@ import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.SwingUtilities;
 
+
 public class RegistroPaciente extends javax.swing.JFrame {
 
     /**
      * Creates new form NewJFrame
      */
+    
     public RegistroPaciente() {
         initComponents();
         this.setSize(675, 220); //Ajusta tamaño
         this.setLocationRelativeTo(null); //Centra en pantalla
-        
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         
         // Renderer para deshabilitar visualmente el primer ítem
         comboBoxEsp.setRenderer(new DefaultListCellRenderer() {

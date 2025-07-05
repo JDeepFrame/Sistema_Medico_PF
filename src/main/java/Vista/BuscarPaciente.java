@@ -9,15 +9,18 @@ import javax.swing.SwingUtilities;
  *
  * @author J.Vidaurre Al.
  */
+
 public class BuscarPaciente extends javax.swing.JFrame {
 
     /**
      * Creates new form EditarPacienteNuevo
      */
+    
     public BuscarPaciente() {
         initComponents();
         this.setSize(325, 200); //Ajusta tamaño
         this.setLocationRelativeTo(null); //Centra en pantalla
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -102,6 +105,14 @@ public class BuscarPaciente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public String getDniIngresado() {
+        return textFieldDNI.getText().trim();
+    }
+    
+    public JButton getBotonBuscarPaciente() {
+        return botonBuscar;
+    }
+    
     private void textFieldDNIMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textFieldDNIMouseClicked
         // TODO add your handling code here:
         textFieldDNI.setText("");
@@ -133,17 +144,17 @@ public class BuscarPaciente extends javax.swing.JFrame {
     private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
         // TODO add your handling code here:
         //Creamos una instancia de la clase "Paciente Encontrado"
-        PacienteEncontrado mostrarPaciente = new PacienteEncontrado();
+        //PacienteEncontrado mostrarPaciente = new PacienteEncontrado();
         //Configuramos el Frame para que se muestre
-        mostrarPaciente.setLocationRelativeTo(null);  //centra en pantalla
-        mostrarPaciente.toFront();  //trae al frente
-        mostrarPaciente.requestFocus();  //pide el foco
-        mostrarPaciente.setVisible(true);
+        //mostrarPaciente.setLocationRelativeTo(null);  //centra en pantalla
+        //mostrarPaciente.toFront();  //trae al frente
+        //mostrarPaciente.requestFocus();  //pide el foco
+        //mostrarPaciente.setVisible(true);
         // "Window ventana" obtiene la ventana que contiene al botón y la cierra.
-        Window ventana = SwingUtilities.getWindowAncestor((JButton) evt.getSource());
-        if (ventana != null) {
-            ventana.dispose();
-        }
+        //Window ventana = SwingUtilities.getWindowAncestor((JButton) evt.getSource());
+        //if (ventana != null) {
+            //ventana.dispose();
+        //}
     }//GEN-LAST:event_botonBuscarActionPerformed
 
     /**

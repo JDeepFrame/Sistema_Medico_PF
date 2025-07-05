@@ -1,3 +1,4 @@
+
 package Modelo;
 
 /**
@@ -10,6 +11,7 @@ import java.util.Map;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.io.*;
+
 
 public class ListaPacientes {
     
@@ -26,6 +28,7 @@ public class ListaPacientes {
         cargarPacientesDesdeArchivo();
     }
     
+    
     //Métodos Principales (CRUD)
     public ListaPacientes agregarPaciente(Paciente element) {
         this.listaPacientes.add(element);
@@ -33,6 +36,7 @@ public class ListaPacientes {
         escribirPacienteEnArchivo(element);
         return this;
     }
+    
     
     public ListaPacientes eliminarPaciente(Paciente element) {
         if (element != null) {
@@ -43,20 +47,28 @@ public class ListaPacientes {
         return this;
     }
     
+    
     public Paciente buscarPaciente(String dni) {
+        //Usa HashMap para mayor eficiencia en búsqueda
         return this.mapPacientes.get(dni);
         //Si el DNI no existe, devuelve null.
     }
     
+    
     public void obtenerTodos() {
+        //Usa ArrayList para mayor eficiencia en iteración
         for (Paciente element : this.listaPacientes) {
             System.out.println(element);
         }
     }
     
+    
     public ListaPacientes editarDatosPaciente(Paciente element) {
+        
         if (element != null) {
+            
             Paciente existente = this.mapPacientes.get(element.getDni());
+            
             if (existente != null) {
                 existente.setNombre(element.getNombre());
                 existente.setApellido(element.getApellido());
@@ -72,41 +84,53 @@ public class ListaPacientes {
             }
         }   return this;
     }
-        
+    
+    
     // ---------------------------
     // Manejo de archivo de texto
     // ---------------------------
     
+    
     // Crea el archivo y carpeta si no existen
     private void crearArchivoSiNoExiste() {
+        
         File archivo = new File(rutaArchivo);
+        
         try {
             File carpeta = archivo.getParentFile();
+            
             if (carpeta != null && !carpeta.exists()) {
                 carpeta.mkdirs(); // crea carpeta "data/"
             }
+            
             if (!archivo.exists()) {
                 archivo.createNewFile(); // crea archivo vacío
-                try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivo))) {
-                //writer.write("DNI || Nombre || Apellido || Especialidad || Tiene SIS");
+                
+                try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivo))) {               
                 String cabecera = String.format("%-10s || %-20s || %-20s || %-20s || %-10s",
                 "DNI", "Nombre", "Apellido", "Especialidad", "Tiene SIS");
                 writer.write(cabecera);
                 writer.newLine();
                 }
             }
-        } catch (IOException e) {
+        } 
+        catch (IOException e) {
             System.err.println("Error al crear archivo de pacientes: " + e.getMessage());
         }
     }
     
+    
     //Método para leer datos del archivo
     private void cargarPacientesDesdeArchivo() {
+        
     File archivo = new File(rutaArchivo);
+    
     if (!archivo.exists()) return;
 
     try (BufferedReader reader = new BufferedReader(new FileReader(archivo))) {
+        
         String linea;
+        
         int lineaActual = 0;
 
         while ((linea = reader.readLine()) != null) {
@@ -160,6 +184,7 @@ public class ListaPacientes {
 
     // Agrega una línea al archivo (modo append)
     private void escribirPacienteEnArchivo(Paciente p) {
+        
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(rutaArchivo, true))) {
             writer.write(formatoPaciente(p));
             writer.newLine();
@@ -170,8 +195,9 @@ public class ListaPacientes {
 
     // Reescribe el archivo completo con la lista actual de pacientes
     private void sobrescribirArchivoCompleto() {
+        
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(rutaArchivo, false))) {
-            //writer.write("DNI || Nombre || Apellido || Especialidad || Tiene SIS");
+            
             String cabecera = String.format("%-10s || %-20s || %-20s || %-20s || %-10s",
             "DNI", "Nombre", "Apellido", "Especialidad", "Tiene SIS");
             writer.write(cabecera);
@@ -187,6 +213,7 @@ public class ListaPacientes {
 
     // Define el formato en que se guarda cada paciente (CSV)
     private String formatoPaciente(Paciente p) {
+        
         return String.format("%-10s || %-20s || %-20s || %-20s || %-10s",
                 p.getDni(),
                 p.getNombre(),
@@ -195,9 +222,11 @@ public class ListaPacientes {
                 p.getTieneSIS());
     }
     
-    //Método para mostrar el contenido del archivo .txt (por consola)
+    //Método para mostrar el contenido del archivo (por consola)
     public void mostrarContenidoArchivo() {
+        
     File archivo = new File(rutaArchivo);
+    
     if (!archivo.exists()) {
         System.out.println("El archivo no existe.");
         return;
@@ -213,6 +242,30 @@ public class ListaPacientes {
     catch (IOException e) {
         System.err.println("Error al leer el archivo: " + e.getMessage());
         }
+    }
+    
+    
+    //Método para obtener el contenido del archivo como texto (Para mostrar en JTextArea)
+    public String obtenerContenidoArchivoComoTexto() {
+        
+        File archivo = new File(rutaArchivo);
+        if (!archivo.exists()) {
+            return "El archivo de pacientes no existe.";
+        }
+
+        StringBuilder contenido = new StringBuilder();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(archivo))) {
+            String linea;
+        while ((linea = reader.readLine()) != null) {
+            contenido.append(linea).append("\n");
+            }
+        } 
+        catch (IOException e) {
+            return "Error al leer el archivo: " + e.getMessage();
+        }
+        
+        return contenido.toString();
     }
     
 }

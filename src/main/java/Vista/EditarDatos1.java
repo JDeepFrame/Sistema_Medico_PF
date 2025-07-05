@@ -9,15 +9,18 @@ import javax.swing.SwingUtilities;
  *
  * @author J.Vidaurre Al.
  */
+
 public class EditarDatos1 extends javax.swing.JFrame {
 
     /**
      * Creates new form EditarPacienteNuevo
      */
+    
     public EditarDatos1() {
         initComponents();
         this.setSize(325, 200); //Ajusta tamaño
         this.setLocationRelativeTo(null); //Centra en pantalla
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -102,6 +105,14 @@ public class EditarDatos1 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public String getDniIngresado() {
+        return textFieldDNI.getText().trim();
+    }
+    
+    public JButton getBotonBuscar() {
+        return botonEditar;
+    }
+    
     private void textFieldDNIMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textFieldDNIMouseClicked
         // TODO add your handling code here:
         textFieldDNI.setText("");
@@ -120,9 +131,9 @@ public class EditarDatos1 extends javax.swing.JFrame {
     private void botonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEditarActionPerformed
         // TODO add your handling code here:
         //Creamos una instancia de la clase "EditarDatosForm"
-        EditarDatosForm editarDatosForm = new EditarDatosForm();
+        //EditarDatosForm editarDatosForm = new EditarDatosForm(); CODIGO COMENTADO
         //Configuramos el Frame para que se muestre
-        editarDatosForm.setVisible(true);
+        //editarDatosForm.setVisible(true); CODIGO COMENTADO
         // "Window ventana" obtiene la ventana que contiene el botón y la cierra.
         Window ventana = SwingUtilities.getWindowAncestor((JButton) evt.getSource());
         if (ventana != null) {

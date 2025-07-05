@@ -1,8 +1,12 @@
 package Vista;
+
 /**
  *
  * @author J. Vidaurre Al.
  */
+
+import Modelo.Especialidad;
+import Modelo.Paciente;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
@@ -12,15 +16,19 @@ import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.SwingUtilities;
 
+
 public class EditarDatosForm extends javax.swing.JFrame {
 
     /**
      * Creates new form NewJFrame
      */
+    
     public EditarDatosForm() {
+        
         initComponents();
         this.setSize(675, 220); //Ajusta tamaño
         this.setLocationRelativeTo(null); //Centra en pantalla
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         
         // Renderer para deshabilitar visualmente el primer ítem
         comboBoxEsp.setRenderer(new DefaultListCellRenderer() {
@@ -36,10 +44,10 @@ public class EditarDatosForm extends javax.swing.JFrame {
             c.setFont(c.getFont().deriveFont(Font.BOLD));
         } else {
             c.setForeground( new Color(204, 204, 204));
-        }
-        return c;
-    }
-});
+                }
+            return c;
+            }
+        });
     }
 
     /**
@@ -218,6 +226,59 @@ public class EditarDatosForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void setDatosPaciente(Paciente p) {
+    textFieldNombre.setText(p.getNombre());
+    textFieldApellido.setText(p.getApellido());
+    textFieldDNI.setText(p.getDni());
+
+    // Manejo de RadioButton para SIS
+    if (p.getTieneSIS().equalsIgnoreCase("si")) {
+        rbSi.setSelected(true);
+    } else {
+        rbNo.setSelected(true);
+    }
+
+    // Seleccionar la especialidad en el JComboBox
+    String descripcionEsp = p.getEspecialidad().getDescripcion();
+
+    for (int i = 0; i < comboBoxEsp.getItemCount(); i++) {
+        Object item = comboBoxEsp.getItemAt(i);
+        if (item instanceof String && item.equals(descripcionEsp)) {
+            comboBoxEsp.setSelectedIndex(i);
+            break;
+            }
+        }
+    }
+    
+    public Paciente obtenerPacienteEditado() {
+    String nombre = textFieldNombre.getText().trim();
+    String apellido = textFieldApellido.getText().trim();
+    String dni = textFieldDNI.getText().trim();
+
+    String tieneSIS = rbSi.isSelected() ? "Si" : "No";
+
+    String especialidadStr = (String) comboBoxEsp.getSelectedItem();
+    Especialidad especialidad = null;
+
+    for (Especialidad esp : Especialidad.values()) {
+        if (esp.getDescripcion().equals(especialidadStr)) {
+            especialidad = esp;
+            break;
+        }
+    }
+
+    // Validación mínima
+    if (nombre.isEmpty() || apellido.isEmpty() || dni.isEmpty() || especialidad == null) {
+        return null; // Devuelve null si hay error
+        }
+
+    return new Paciente(tieneSIS, especialidad, nombre, apellido, dni);
+    }
+    
+    public JButton getBotonGuardar() {
+        return botonGuardarCambios;
+    }
+    
     private void textFieldApellidoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textFieldApellidoMouseClicked
         // TODO add your handling code here:
         textFieldApellido.setText("");

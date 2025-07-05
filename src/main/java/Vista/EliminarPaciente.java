@@ -10,15 +10,18 @@ import javax.swing.SwingUtilities;
  *
  * @author J. Vidaurre Al.
  */
+
 public class EliminarPaciente extends javax.swing.JFrame {
 
     /**
      * Creates new form NewJFrame
      */
+    
     public EliminarPaciente() {
         initComponents();
         this.setSize(325, 200); //Ajusta tamaño
         this.setLocationRelativeTo(null); //Centra en pantalla
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     /**

@@ -126,6 +126,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         return botonMostrar;
     }
     
+    public JButton getBotonEditar() {
+        return botonEditar;
+    }
+    
+    public JButton getBotonBuscar() {
+        return botonBuscar;
+    }
+    
+    
     private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
         // TODO add your handling code here:
         System.exit(0);
@@ -150,9 +159,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void botonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEditarActionPerformed
         // TODO add your handling code here:
         //Creamos una instancia de la clase "EditarPacienteNuevo"
-        EditarDatos1 editarPacienteNuevo = new EditarDatos1();
+        //EditarDatos1 editarPacienteNuevo = new EditarDatos1();
         //Configuramos el Frame para que se muestre
-        editarPacienteNuevo.setVisible(true);
+        //editarPacienteNuevo.setVisible(true);
     }//GEN-LAST:event_botonEditarActionPerformed
 
     private void botonMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMostrarActionPerformed
@@ -163,9 +172,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
         // TODO add your handling code here:
         //Creamos una instancia de la clase "BuscarPaciente"
-        BuscarPaciente buscarPaciente = new BuscarPaciente();
+        //BuscarPaciente buscarPaciente = new BuscarPaciente();
         //Configuramos el Frame para que se muestre
-        buscarPaciente.setVisible(true);
+        //buscarPaciente.setVisible(true);
     }//GEN-LAST:event_botonBuscarActionPerformed
 
     /**
